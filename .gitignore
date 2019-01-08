@@ -3,6 +3,7 @@ datasets/
 /cornell_movie_dialogue/
 *.orig
 *.lprof
+.vscode/
 
 # Remote edit
 *.ftpconfig

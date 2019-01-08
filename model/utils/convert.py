@@ -1,20 +1,18 @@
 import torch
 from torch.autograd import Variable
 
-
-def to_var(x, on_cpu=False, gpu_id=None, async=False):
-    """Tensor => Variable"""
-    if torch.cuda.is_available() and not on_cpu:
-        x = x.cuda(gpu_id, async)
-        #x = Variable(x)
-    return x
-
-
 def to_tensor(x):
     """Variable => Tensor"""
     if torch.cuda.is_available():
         x = x.cpu()
     return x.data
+
+def to_var(x, on_cpu=False, gpu_id=0):
+    """Tensor => Variable"""
+    if torch.cuda.is_available() and not on_cpu:
+        x = x.cuda(gpu_id)
+        #x = Variable(x)
+    return x
 
 def reverse_order(tensor, dim=0):
     """Reverse Tensor or Variable"""
